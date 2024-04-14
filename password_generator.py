@@ -1,4 +1,4 @@
-import random
+import secrets
 import string
 
 def generate_password(length, include_digits=True, include_symbols=True):
@@ -8,7 +8,7 @@ def generate_password(length, include_digits=True, include_symbols=True):
     if include_symbols:
         characters += string.punctuation
     
-    password = ''.join(random.choice(characters) for _ in range(length))
+    password = ''.join(secrets.choice(characters) for _ in range(length))
     return password
 
 def main():
