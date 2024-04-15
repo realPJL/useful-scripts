@@ -1,5 +1,4 @@
 import img2pdf
-import os
 
 def jpg_to_pdf(jpg_path, pdf_path):
     # Convert JPG file to a PDF file
