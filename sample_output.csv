@@ -1,0 +1,4 @@
+name,age,email,address
+John Doe,30,johndoe@example.com,"{'street': '123 Main St', 'city': 'Anytown', 'country': 'USA'}"
+Jane Smith,25,janesmith@example.com,"{'street': '456 Elm St', 'city': 'Smallville', 'country': 'Canada'}"
+Max Mustermann,35,max@example.com,"{'street': '789 Oak St', 'city': 'Bigtown', 'country': 'Germany'}"

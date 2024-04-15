@@ -1,0 +1,35 @@
+[
+    {
+      "name": "John Doe",
+      "age": 30,
+      "email": "johndoe@example.com",
+      "address": 
+      {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "country": "USA"
+      }
+    },
+    {
+      "name": "Jane Smith",
+      "age": 25,
+      "email": "janesmith@example.com",
+      "address": 
+      {
+        "street": "456 Elm St",
+        "city": "Smallville",
+        "country": "Canada"
+      }
+    },
+    {
+      "name": "Max Mustermann",
+      "age": 35,
+      "email": "max@example.com",
+      "address": 
+      {
+        "street": "789 Oak St",
+        "city": "Bigtown",
+        "country": "Germany"
+      }
+    }
+]  
