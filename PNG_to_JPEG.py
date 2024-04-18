@@ -1,3 +1,4 @@
+# pip install Pillow
 from PIL import Image
 
 def convert_png_to_jpeg(png_path, jpeg_path):

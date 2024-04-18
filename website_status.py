@@ -1,6 +1,7 @@
 # don't just run this script - it uses a console argument
 # python3 website_status.py https://example.com
 
+# pip install requests
 import sys
 import requests
 

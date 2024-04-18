@@ -1,3 +1,4 @@
+# pip install img2pdf
 import img2pdf
 
 def jpg_to_pdf(jpg_path, pdf_path):

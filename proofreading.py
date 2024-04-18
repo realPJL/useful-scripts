@@ -1,3 +1,4 @@
+#pip install lmproof
 import lmproof
 
 def proofread(text):
