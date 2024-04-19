@@ -1,8 +1,7 @@
 # pip install python-nmap
 import nmap
 
-def scan_network():
-    
+def scan_network():    
     scanner = nmap.PortScanner()
 
     print("Scanning for live hosts...")
@@ -18,15 +17,28 @@ def scan_network():
         # -p    specifies range of ports to scan
         # -sV   perform version detection
         # -T4   sets timing template to aggressive
-        scanner.scan(hosts=host, arguments='-p 1-1023 -sV -T4')
+        # -O    operating system detection
+        # -sC   script scanning
+        scan_arguments = '-p 1-1023 -O -sV -sC -T4'
+        print(f"Scan command: nmap {host} {scan_arguments}")
+        scanner.scan(hosts=host, arguments=scan_arguments)
 
         # Print scan results for current host
+        print(f"Results for host {host}: ")
         for host in scanner.all_hosts():
+            print(f"Host:   {host}")
 
-            print(f"Host: {host}")
+            if 'osmatch' in scanner[host]:
+                print("Operating System:")
+                for os_match in scanner[host]["osmatch"]:
+                    print(f"- {os_match['name']} (Accuracy: {os_match['accuracy']})")
+            
+            if 'scripts' in scanner[host]:
+                print("Script Scan Results:")
+                for script_id, script_result in scanner[host]['scripts'].items():
+                    print(f"- {script_id}:  {script_result['output']}")
 
             for proto in scanner[host].all_protocols():
-
                 print(f"Protocol: {proto}")
                 ports = scanner[host][proto].keys()
 
