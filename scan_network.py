@@ -1,3 +1,6 @@
+# DISCLAIMER:   This script is intended for educational and legitimate network administration purposes only. Unauthorized use of this script for malicious activities is strictly prohibited. By using this script, you agree to use it responsibly and in compliance with applicable laws and regulations.
+# WARNING:      Unauthorized access to computer networks and systems may violate local, state, federal, and international laws. It is your responsibility to ensure that you have appropriate authorization before scanning or accessing any network or system. The author of this script disclaims any liability for unauthorized or illegal use.
+
 # pip install python-nmap
 import nmap
 
