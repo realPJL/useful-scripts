@@ -22,9 +22,10 @@ def scan_network():
         # -T4   sets timing template to aggressive
         # -O    operating system detection
         # -sC   script scanning
-        scan_arguments = '-p 1-1023 -O -sV -sC -T4'
+        scan_arguments = '-p 1-1023 -O -sV -sC -T4 --script vuln'
         print(f"Scan command: nmap {host} {scan_arguments}")
         scanner.scan(hosts=host, arguments=scan_arguments)
+
 
         # Print scan results for current host
         print(f"Results for host {host}: ")
@@ -49,6 +50,24 @@ def scan_network():
                     service = scanner[host][proto][port]['name']
                     state = scanner[host][proto][port]['state']
                     print(f"Port: {port}\tState: {state}\tService: {service}")
+
+                    # Check if vulnerability scan results are available for the port
+                    if 'script' in scanner[host][proto][port]:
+                        vulnerability_scripts = scanner[host][proto][port]['script']
+
+                        if 'vulners' in vulnerability_scripts:
+                            print("Vulnerability Scan Results:")
+
+                            vuln_result = ""
+
+                            for vulnerability_script in vulnerability_scripts['vulners']:
+                                vuln_result += vulnerability_script
+                            print(vuln_result)
+                            
+                        else:
+                            print("No vulnerability scaan results available.")
+                    else:
+                            print("No vulnerability scaan results available.")
 
 if __name__ == "__main__":
     scan_network()
