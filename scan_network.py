@@ -51,6 +51,10 @@ def scan_network():
                     state = scanner[host][proto][port]['state']
                     print(f"Port: {port}\tState: {state}\tService: {service}")
 
+                    if 'product' in scanner[host][proto][port]:
+                        product = scanner[host][proto][port]['product']
+                        print(f"Service Banner: {product}")
+
                     # Check if vulnerability scan results are available for the port
                     if 'script' in scanner[host][proto][port]:
                         vulnerability_scripts = scanner[host][proto][port]['script']
@@ -65,9 +69,9 @@ def scan_network():
                             print(vuln_result)
                             
                         else:
-                            print("No vulnerability scaan results available.")
+                            print("No vulnerability scan results available.")
                     else:
-                            print("No vulnerability scaan results available.")
+                            print("No vulnerability scan results available.")
 
 if __name__ == "__main__":
     target_network = input("Enter the target network or IP range to scan: ")        # localhost / loopback = 127.0.0.0/8
