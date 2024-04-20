@@ -8,7 +8,7 @@ def scan_network():
     scanner = nmap.PortScanner()
 
     print("Scanning for live hosts...")
-    scanner.scan(hosts='127.0.0.1', arguments='-sn')    # -sn -> ping sweep without attempting to port scan the host (sends ICMP Echo Request ping)
+    scanner.scan(hosts= target_network, arguments='-sn')    # -sn -> ping sweep without attempting to port scan the host (sends ICMP Echo Request ping)
 
     # List of all hosts that responded to ping
     live_hosts = [x for x in scanner.all_hosts() if scanner[x]['status']['state'] == 'up']
@@ -70,4 +70,5 @@ def scan_network():
                             print("No vulnerability scaan results available.")
 
 if __name__ == "__main__":
+    target_network = input("Enter the target network or IP range to scan: ")        # localhost / loopback = 127.0.0.0/8
     scan_network()
