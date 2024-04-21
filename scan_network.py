@@ -5,11 +5,14 @@
 import nmap
 import logging
 import os
+import time
 
 # Logging config
 logging.basicConfig(filename='log_scan_network.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def scan_network():    
+def scan_network():
+    start_time = time.time()
+
     scanner = nmap.PortScanner()
 
     logging.info("Scanning for live hosts...")
@@ -77,6 +80,11 @@ def scan_network():
                             logging.info("No vulnerability scan results available.")
                     else:
                         logging.info("No vulnerability scan results available.")
+    
+    end_time = time.time()
+    scan_duration = end_time - start_time
+    print(f"Scan completed in {scan_duration:.2f} seconds.")
+    logging.info(f"Scan completed in {scan_duration:.2f} seconds.")
 
 
 def print_results_to_console():
