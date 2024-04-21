@@ -4,6 +4,7 @@
 # pip install python-nmap
 import nmap
 import logging
+import os
 
 # Logging config
 logging.basicConfig(filename='log_scan_network.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -77,18 +78,33 @@ def scan_network():
                     else:
                         logging.info("No vulnerability scan results available.")
 
+
 def print_results_to_console():
-    if print_results == 'y':
-        with open('log_scan_network.txt', 'r') as f:
-            file_content = f.read()
-        print(file_content)
-    elif print_results == 'n':
-        print('The script closes now. You can see the results in the log_scan_network.txt file.')
+    if open_question == 'y':
+        print("You selected 'y'.")
+        open_file('log_scan_network.txt')
+
+    elif open_question == 'n':
+        print("You selected 'n'. You can find the logs here: log_scan_network.txt")
+
+    else:
+        print("No valid response given. You can find the logs here: log_scan_network.txt")
+
+
+def open_file(filename):
+    if os.name == 'nt':
+        os.system(f'start {filename}')
+
+    elif os.name == 'posix':
+        os.system(f'xdg-open {filename}')
+
+    else:
+        print("Unsupported operating system.")
 
 
 if __name__ == "__main__":
     target_network = input("Enter the target network or IP range to scan: ")        # localhost / loopback = 127.0.0.0/8
     scan_network()
     print("Scan results saved in log_scan_network.txt")
-    print_results = input("Do you want to print them out here? (y,n): ")
+    open_question = input("Do you want to open 'log_scan_network.txt' (y,n): ")
     print_results_to_console()
