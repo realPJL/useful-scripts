@@ -1,3 +1,4 @@
+# pip install Pillow
 from PIL import Image
 import os
 
