@@ -5,4 +5,5 @@ echo "------------------------------------"
 echo "GPU => $(/usr/bin/vcgencmd measure_temp)"     #adjust path if vcgencmd not found - ($ which vcgencmd) in terminal
 echo "CPU => $((cpu/1000))'C"
 
-# ./check_cpu_gpu_temp.sh to run
+# chmod +x check_cpu_gpu_temp.sh        to make it executable
+# ./check_cpu_gpu_temp.sh               to run
